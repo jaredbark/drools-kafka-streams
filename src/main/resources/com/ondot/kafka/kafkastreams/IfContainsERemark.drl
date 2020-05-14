@@ -1,0 +1,14 @@
+package com.ondot.kafka.kafkastreams;
+
+import com.ondot.kafka.sample.MessageObject;
+
+rule "If Contains E Remark"
+    no-loop true
+when
+//    messageObject:MessageObject (message contains 'e') or messageObject:MessageObject (message contains 'E')
+    messageObject:MessageObject (message contains 'e' || contains 'E')
+then
+//    System.out.println(messageObject.getKey() + " contains E");
+    messageObject.setRemark("Contain E");
+//    update(messageObject);
+end
